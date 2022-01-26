@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 //int main()
 //{
@@ -174,22 +176,53 @@
 
 
 //猜数字游戏程序
+//开始目录函数
 void menu()
 {
 	printf("******************\n");
 	printf("***** 1.play *****\n");
 	printf("***** 0.exit *****\n");
 	printf("******************\n");
-}//开始目录函数
+}
 
+
+//猜数字的游戏程序
 void game()
 {
-	return 0;
-}//猜数字游戏的主程序
+	//生成一个随机数
+	int r = rand() % 100 + 1;
+	
+	//猜数字的过程
+	int num = 0;
+	printf("请输入一个数字：>");
 
+	while (1)
+	{
+		scanf("%d", &num);
+
+		if (num < r)
+		{
+			printf("猜小了，请重新输入一个数字：>");
+		}
+
+		else if (num > r)
+		{
+			printf("猜大了，请重新输入一个数字：>");
+		}
+
+		else
+		{
+			printf("恭喜你，猜对了！数字是：%d\n", r);
+			break;
+		}
+	}
+}
+
+//猜数字游戏主程序
 int main()
 {
 	int input = 0;
+	srand((unsigned int)time(NULL));
 	do
 	{
 		menu();//打印菜单
