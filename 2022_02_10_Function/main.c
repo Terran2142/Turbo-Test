@@ -81,16 +81,64 @@
 
 
 //加减运算的分文件实现
-#include "add.h"
-#include "sub.h"
+//#include "add.h"
+//#include "sub.h"
+//
+//int main()
+//{
+//	int a = 20;
+//	int b = 15;
+//
+//	printf("%d\n", Add(a, b));
+//	printf("%d\n", Sub(a, b));
+//
+//	return 0;
+//}
+
+
+//函数递归
+int sim_strlen(char* str)
+{
+	if (*str != '\0')
+		return 1 + sim_strlen(str + 1);
+	else return 0;
+}
+
+//int Fib(int n)
+//{
+//	if (n <= 2)
+//		return 1;
+//	else
+//		return Fib(n - 2) + Fib(n - 1);
+//}
+
+int Fib(int n)
+{
+	int sum = 1;
+	int a = 1, b = 1;
+
+	while (n > 2)
+	{
+		sum = a + b;
+		a = b;
+		b = sum;
+		n--;
+	}
+	return sum;
+}
 
 int main()
 {
-	int a = 20;
-	int b = 15;
+	//char arr[] = "bit";
 
-	printf("%d\n", Add(a, b));
-	printf("%d\n", Sub(a, b));
+	//printf("%d", sim_strlen(arr));
+
+	int n = 0;
+	scanf("%d", &n);
+
+	int num = Fib(n);
+
+	printf("第 %d 个数是： %d\n", n, num);
 
 	return 0;
 }
